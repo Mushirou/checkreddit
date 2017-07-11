@@ -9,8 +9,8 @@ while isFirst:
   try:
     resp = urllib.request.urlopen(url).read()
     parsed = json.loads(resp.decode('utf-8'))
-    antItem = parsed['data']['children'][0]
-    prevDoc = antItem['data']
+    prevItem = parsed['data']['children'][0]
+    prevDoc = prevItem['data']
     print(prevDoc['title'])
     print(prevDoc['url'])
     print()
@@ -27,11 +27,11 @@ while True:
   try:
     resp = urllib.request.urlopen(url).read()
     parsed = json.loads(resp.decode('utf-8'))
-    atuItem = parsed['data']['children'][0]
-    currDoc = atuItem['data']
-    titAtu = currDoc['title']
-    titAnt = prevDoc['title']
-    if not (titAnt == titAtu) :
+    currItem = parsed['data']['children'][0]
+    currDoc = currItem['data']
+    currTitle = currDoc['title']
+    prevTitle = prevDoc['title']
+    if not (prevTitle == currTitle) :
       prevDoc = currDoc
       print(currDoc['title'])
       print(currDoc['url'])
